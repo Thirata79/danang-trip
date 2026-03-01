@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ダナン・リゾート 旅程表 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0a3d3d;
+    --teal: #0d6b6b;
+    --mid: #1a9090;
+    --light: #5dbcbc;
+    --sand: #f5e6c8;
+    --warm: #edd9a3;
+    --coral: #e8725a;
+    --gold: #d4a843;
+    --cream: #fbf8f2;
+    --dark: #1c2e35;
+    --muted: #5a7a82;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--deep);
+    font-family: 'Noto Serif JP', serif;
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 120% 80% at 80% 20%, rgba(13,107,107,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 100% at 10% 80%, rgba(10,61,61,0.8) 0%, transparent 60%),
+      linear-gradient(160deg, #0a3d3d 0%, #0d5c5c 40%, #0a3d3d 100%);
+  }
+
+  /* Animated wave circles */
+  .wave {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(93,188,188,0.15);
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .wave:nth-child(1) { width: 300px; height: 300px; top: -100px; right: -80px; animation-delay: 0s; }
+  .wave:nth-child(2) { width: 500px; height: 500px; top: -200px; right: -180px; animation-delay: 1s; border-color: rgba(212,168,67,0.1); }
+  .wave:nth-child(3) { width: 200px; height: 200px; bottom: 50px; left: -60px; animation-delay: 2s; }
+  .wave:nth-child(4) { width: 400px; height: 400px; bottom: -100px; left: -150px; animation-delay: 0.5s; border-color: rgba(232,114,90,0.1); }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+  /* Grain texture */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .flag { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--warm);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    animation: fadeUp 1.2s 0.2s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+    animation: fadeUp 1.2s 0.3s ease both;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--light);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1.2s 0.4s ease both;
+  }
+
+  .hero-badges {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1.2s 0.5s ease both;
+  }
+
+  .badge {
+    padding: 0.5rem 1.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    border: 1px solid;
+  }
+  .badge-coral { background: var(--coral); border-color: var(--coral); color: white; }
+  .badge-gold { background: transparent; border-color: var(--gold); color: var(--gold); }
+
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: rgba(245,230,200,0.4);
+    animation: fadeUp 2s 1s ease both;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    text-align: center;
+    opacity: 0.8;
+  }
+
+  .day-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0 3rem;
+    margin-bottom: 5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .day-card.visible { opacity: 1; transform: translateY(0); }
+
+  .day-left {
+    text-align: right;
+    padding-top: 0.3rem;
+    position: relative;
+  }
+  .day-left::after {
+    content: '';
+    position: absolute;
+    right: -1.7rem;
+    top: 0.55rem;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(212,168,67,0.2);
+  }
+
+  /* Vertical line connecting dots */
+  .day-card:not(:last-child) .day-left::before {
+    content: '';
+    position: absolute;
+    right: -1.43rem;
+    top: 1.3rem;
+    width: 1px;
+    bottom: calc(-5rem - 0.55rem);
+    background: linear-gradient(to bottom, rgba(212,168,67,0.3), rgba(212,168,67,0.05));
+  }
+
+  .day-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--light);
+    display: block;
+  }
+  .day-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .day-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--warm);
+    margin-top: 0.4rem;
+    display: block;
+    opacity: 0.7;
+  }
+
+  .day-right {}
+
+  .day-header {
+    margin-bottom: 1.2rem;
+  }
+  .day-emoji { font-size: 1.6rem; margin-bottom: 0.4rem; display: block; }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .schedule-list {
+    list-style: none;
+    border-top: 1px solid rgba(93,188,188,0.15);
+    padding-top: 1rem;
+  }
+
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(93,188,188,0.08);
+    align-items: baseline;
+  }
+
+  .sched-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--mid);
+    letter-spacing: 0.05em;
+    padding-top: 0.05rem;
+  }
+
+  .sched-text {
+    font-size: 0.88rem;
+    color: rgba(245,230,200,0.85);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* Tips */
+  .tip-box {
+    margin-top: 1.2rem;
+    padding: 1rem 1.2rem;
+    background: rgba(212,168,67,0.08);
+    border-left: 2px solid var(--gold);
+    position: relative;
+  }
+  .tip-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .tip-text {
+    font-size: 0.82rem;
+    color: rgba(245,230,200,0.7);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .tip-text em {
+    color: var(--coral);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* ── TIPS GRID ── */
+  .tips-section {
+    background: rgba(13,107,107,0.15);
+    border-top: 1px solid rgba(93,188,188,0.12);
+    border-bottom: 1px solid rgba(93,188,188,0.12);
+    padding: 5rem 2rem;
+  }
+
+  .tips-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .tip-card {
+    padding: 1.8rem;
+    border: 1px solid rgba(93,188,188,0.2);
+    background: rgba(10,61,61,0.5);
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
+  }
+  .tip-card:hover { border-color: rgba(212,168,67,0.4); }
+  .tip-card.visible { opacity: 1; transform: translateY(0); }
+  .tip-card:nth-child(2) { transition-delay: 0.1s; }
+  .tip-card:nth-child(3) { transition-delay: 0.2s; }
+  .tip-card:nth-child(4) { transition-delay: 0.3s; }
+
+  .tip-icon { font-size: 1.5rem; margin-bottom: 0.8rem; display: block; }
+  .tip-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--warm);
+    margin-bottom: 0.7rem;
+    font-weight: 400;
+  }
+  .tip-card-text {
+    font-size: 0.82rem;
+    color: rgba(245,230,200,0.65);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(245,230,200,0.25);
+  }
+  footer span { color: var(--coral); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="hero-content">
+    <span class="flag">🇻🇳</span>
+    <p class="hero-eyebrow">Vietnam · Da Nang · 2026.03</p>
+    <h1 class="hero-title">ダナン<br>リゾート</h1>
+    <p class="hero-subtitle">6日間の旅程表</p>
+    <div class="hero-badges">
+      <span class="badge badge-coral">3月14日〜19日</span>
+      <span class="badge badge-gold">Naman Retreat 滞在</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <p class="section-label">— Itinerary —</p>
+
+  <!-- Day 1 -->
+  <div class="day-card" data-day>
+    <div class="day-left">
+      <span class="day-num">01</span>
+      <span class="day-label">Day</span>
+      <span class="day-date">3/14 土</span>
+    </div>
+    <div class="day-right">
+      <div class="day-header">
+        <span class="day-emoji">✈️</span>
+        <h2 class="day-title">出発</h2>
+      </div>
+      <ul class="schedule-list">
+        <li class="schedule-item">
+          <span class="sched-time">夜</span>
+          <span class="sched-text">渋谷から空港連絡バスで羽田空港へ</span>
+        </li>
+        <li class="schedule-item">
+          <span class="sched-time">深夜</span>
+          <span class="sched-text">「泉天空の湯」で入浴・リラックス。機内ではしっかり睡眠。</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card" data-day>
+    <div class="day-left">
+      <span class="day-num">02</span>
+      <span class="day-label">Day</span>
+      <span class="day-date">3/15 日</span>
+    </div>
+    <div class="day-right">
+      <div class="day-header">
+        <span class="day-emoji">🌴</span>
+        <h2 class="day-title">到着・ダナンの<br>熱気を感じる</h2>
+      </div>
+      <ul class="schedule-list">
+        <li class="schedule-item">
+          <span class="sched-time">午前</span>
+          <span class="sched-text">ダナン到着 → Grabでナマン・リトリートへ</span>
+        </li>
+        <li class="schedule-item">
+          <span class="sched-time">午後</span>
+          <span class="sched-text">チェックイン後、スパ① ── 移動の疲れを解消</span>
+        </li>
+        <li class="schedule-item">
+          <span class="sched-time">夜</span>
+          <span class="sched-text">ホテルのビーチでゆったりリラックス</span>
+        </li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">💡 Tips</div>
+        <p class="tip-text">体力が残っていれば21:00にドラゴンブリッジへ。<em>週末限定「火と水のショー」</em>がギリギリ見られます！（翌日バーナヒルズのため無理は禁物）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card" data-day>
+    <div class="day-left">
+      <span class="day-num">03</span>
+      <span class="day-label">Day</span>
+      <span class="day-date">3/16 月</span>
+    </div>
+    <div class="day-right">
+      <div class="day-header">
+        <span class="day-emoji">🏔️</span>
+        <h2 class="day-title">バーナヒルズ &amp;<br>ダナン・シティナイト</h2>
+      </div>
+      <ul class="schedule-list">
+        <li class="schedule-item"><span class="sched-time">06:00</span><span class="sched-text">起床・早めの朝食</span></li>
+        <li class="schedule-item"><span class="sched-time">07:00</span><span class="sched-text">Grabでバーナヒルズへ出発（約1時間）</span></li>
+        <li class="schedule-item"><span class="sched-time">午前</span><span class="sched-text">ゴールデンブリッジ観光。ランチはサクラレストラン。</span></li>
+        <li class="schedule-item"><span class="sched-time">15:00</span><span class="sched-text">コン・カフェでコナッツコーヒー休憩</span></li>
+        <li class="schedule-item"><span class="sched-time">16:30</span><span class="sched-text">ピンクの教会（大聖堂）で記念撮影</span></li>
+        <li class="schedule-item"><span class="sched-time">18:00</span><span class="sched-text">ハン川ボートクルーズ ── 夜景を船上から堪能</span></li>
+        <li class="schedule-item"><span class="sched-time">19:15</span><span class="sched-text">市内で夕食（バインセオ・シーフードなど）</span></li>
+        <li class="schedule-item"><span class="sched-time">21:30</span><span class="sched-text">スパ② ── 足のリカバリー</span></li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">💡 Tips</div>
+        <p class="tip-text">月曜の夜のボートは週末より落ち着いています。ゆっくりダナンのビル群の夜景を楽しめます。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-card" data-day>
+    <div class="day-left">
+      <span class="day-num">04</span>
+      <span class="day-label">Day</span>
+      <span class="day-date">3/17 火</span>
+    </div>
+    <div class="day-right">
+      <div class="day-header">
+        <span class="day-emoji">🏖️</span>
+        <h2 class="day-title">至福のホカンス &amp;<br>幻想のホイアン</h2>
+      </div>
+      <ul class="schedule-list">
+        <li class="schedule-item"><span class="sched-time">午前</span><span class="sched-text">ゆっくり起きて贅沢な朝食。スパ③ ── 美肌・保湿</span></li>
+        <li class="schedule-item"><span class="sched-time">昼間</span><span class="sched-text">ナマンのプール＆プライベートビーチで「何もしない贅沢」</span></li>
+        <li class="schedule-item"><span class="sched-time">17:00</span><span class="sched-text">Grabでホイアンへ（約20分）</span></li>
+        <li class="schedule-item"><span class="sched-time">夕食</span><span class="sched-text">川沿いテラス席（サクラ または カーゴ・クラブ）でディナー</span></li>
+        <li class="schedule-item"><span class="sched-time">夜</span><span class="sched-text">灯籠流し体験・ランタンが輝く旧市街を散策</span></li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">💡 Tips</div>
+        <p class="tip-text">火曜日は週末の混雑が和らいでいます。<em>川沿いのテラス席も予約が取りやすい</em>ので、ぜひ良い席を確保してください。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card" data-day>
+    <div class="day-left">
+      <span class="day-num">05</span>
+      <span class="day-label">Day</span>
+      <span class="day-date">3/18 水</span>
+    </div>
+    <div class="day-right">
+      <div class="day-header">
+        <span class="day-emoji">☕</span>
+        <h2 class="day-title">ラグジュアリー・<br>アフタヌーン</h2>
+      </div>
+      <ul class="schedule-list">
+        <li class="schedule-item"><span class="sched-time">午前</span><span class="sched-text">ホテルでのんびり</span></li>
+        <li class="schedule-item"><span class="sched-time">14:00</span><span class="sched-text">ソンチャ半島へ移動（約1時間）</span></li>
+        <li class="schedule-item"><span class="sched-time">15:00</span><span class="sched-text">Citron（シトロン）── ノンラー席でアフタヌーンティー</span></li>
+        <li class="schedule-item"><span class="sched-time">夕方</span><span class="sched-text">「ハン市場」でバラマキ土産の買い出し</span></li>
+        <li class="schedule-item"><span class="sched-time">夜</span><span class="sched-text">ライトアップされたドラゴンブリッジを見てからナマンへ</span></li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">💡 Tips</div>
+        <p class="tip-text">水曜は「火と水のショー」はありませんが、<em>橋自体のライトアップは非常に綺麗</em>です。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-card" data-day>
+    <div class="day-left">
+      <span class="day-num">06</span>
+      <span class="day-label">Day</span>
+      <span class="day-date">3/19 木</span>
+    </div>
+    <div class="day-right">
+      <div class="day-header">
+        <span class="day-emoji">🛫</span>
+        <h2 class="day-title">最終日・帰国</h2>
+      </div>
+      <ul class="schedule-list">
+        <li class="schedule-item"><span class="sched-time">午前</span><span class="sched-text">スパ④（最後のご褒美） → チェックアウト</span></li>
+        <li class="schedule-item"><span class="sched-time">午後</span><span class="sched-text">お気に入りのカフェや雑貨店を再訪</span></li>
+        <li class="schedule-item"><span class="sched-time">夜</span><span class="sched-text">Grabでダナン空港へ → 日本へ帰国</span></li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- TIPS GRID -->
+<section class="tips-section">
+  <div class="tips-inner">
+    <p class="section-label">— Guide's Advice —</p>
+    <div class="tips-grid">
+      <div class="tip-card" data-tip>
+        <span class="tip-icon">🐉</span>
+        <h3 class="tip-card-title">3/15（日）ドラゴンブリッジ</h3>
+        <p class="tip-card-text">日曜夜が唯一のチャンス！週末限定「火と水のショー」を見たい場合はこの日の21:00に。ただしバーナヒルズ前夜のため無理は禁物。</p>
+      </div>
+      <div class="tip-card" data-tip>
+        <span class="tip-icon">⛵</span>
+        <h3 class="tip-card-title">3/16（月）ハン川ボート</h3>
+        <p class="tip-card-text">月曜の夜は週末より落ち着いています。夜風に当たりながら、ゆっくりダナンのビル群の夜景を楽しめます。</p>
+      </div>
+      <div class="tip-card" data-tip>
+        <span class="tip-icon">🏮</span>
+        <h3 class="tip-card-title">3/17（火）ホイアン</h3>
+        <p class="tip-card-text">平日なので週末の激しい混雑が和らいでいます。川沿いのテラス席も予約が取りやすく、良い席が確保できます。</p>
+      </div>
+      <div class="tip-card" data-tip>
+        <span class="tip-icon">🛁</span>
+        <h3 class="tip-card-title">スパ 4回プラン</h3>
+        <p class="tip-card-text">①到着日（疲労回復）② バーナヒルズ翌夜（足回復）③ホカンス日（美肌・保湿）④最終日（ご褒美）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>🌊 &nbsp; Have a wonderful trip! &nbsp; <span>ダナン 2026</span> &nbsp; 🌺</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-day], [data-tip]').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
