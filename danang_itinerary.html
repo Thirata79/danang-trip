@@ -369,6 +369,89 @@
     color: rgba(245,230,200,0.25);
   }
   footer span { color: var(--coral); }
+
+  /* ══════════════════════════════════
+     MOBILE / iPHONE RESPONSIVE
+  ══════════════════════════════════ */
+
+  /* iPhone SE〜Pro Max (〜480px) */
+  @media (max-width: 480px) {
+    .hero { min-height: 100svh; padding: 0 1.2rem; }
+    .flag { font-size: 1.6rem; margin-bottom: 0.6rem; }
+    .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.18em; margin-bottom: 1rem; }
+    .hero-title { font-size: clamp(3rem, 15vw, 4.5rem); }
+    .hero-subtitle { font-size: clamp(1.1rem, 5.5vw, 1.5rem); margin-bottom: 1.8rem; }
+    .hero-badges { flex-direction: column; align-items: center; gap: 0.6rem; }
+    .badge { font-size: 0.68rem; padding: 0.5rem 1.2rem; }
+    .scroll-hint { bottom: 1.5rem; }
+    .scroll-line { height: 36px; }
+
+    .timeline-section { padding: 3rem 1.2rem; }
+    .section-label { font-size: 0.6rem; letter-spacing: 0.18em; margin-bottom: 2rem; }
+
+    .day-card {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-bottom: 2.8rem;
+      padding-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(93,188,188,0.12);
+    }
+    .day-card:last-child { border-bottom: none; padding-bottom: 0; }
+    .day-left::after, .day-left::before { display: none; }
+
+    .day-left {
+      text-align: left;
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+      padding: 0 0 0.9rem 0;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(212,168,67,0.25);
+    }
+    .day-num { font-size: 2.6rem; line-height: 1; }
+    .day-label { display: none; }
+    .day-date { font-size: 0.7rem; margin-top: 0; opacity: 0.75; }
+
+    .day-emoji { font-size: 1.3rem; margin-bottom: 0.25rem; }
+    .day-title { font-size: 1.35rem; line-height: 1.25; }
+    .day-header { margin-bottom: 0.9rem; }
+
+    .schedule-list { padding-top: 0.8rem; }
+    .schedule-item { grid-template-columns: 50px 1fr; gap: 0.5rem; padding: 0.55rem 0; }
+    .sched-time { font-size: 0.6rem; }
+    .sched-text { font-size: 0.82rem; line-height: 1.6; }
+
+    .tip-box { padding: 0.85rem 1rem; margin-top: 1rem; }
+    .tip-label { font-size: 0.58rem; }
+    .tip-text { font-size: 0.78rem; line-height: 1.7; }
+
+    .tips-section { padding: 3rem 1.2rem; }
+    .tips-grid { grid-template-columns: 1fr; gap: 0.9rem; margin-top: 1.8rem; }
+    .tip-card { padding: 1.3rem; }
+    .tip-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .tip-card-title { font-size: 0.98rem; margin-bottom: 0.45rem; }
+    .tip-card-text { font-size: 0.78rem; line-height: 1.75; }
+
+    footer { padding: 2.5rem 1.2rem; font-size: 0.62rem; }
+  }
+
+  /* Tablet (481–768px) */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .timeline-section { padding: 4rem 1.6rem; }
+    .day-card { grid-template-columns: 90px 1fr; gap: 0 2rem; margin-bottom: 4rem; }
+    .day-left::after { right: -1.1rem; }
+    .day-left::before { right: -0.85rem; bottom: calc(-4rem - 0.55rem); }
+    .day-num { font-size: 2.5rem; }
+    .hero-title { font-size: clamp(3rem, 10vw, 5rem); }
+    .tips-grid { grid-template-columns: 1fr 1fr; }
+    .schedule-item { grid-template-columns: 58px 1fr; }
+  }
+
+  /* iPhone ノッチ・ホームバー対応 */
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .hero { padding-top: env(safe-area-inset-top); }
+    footer { padding-bottom: calc(2.5rem + env(safe-area-inset-bottom)); }
+  }
 </style>
 </head>
 <body>
@@ -447,6 +530,10 @@
           <span class="sched-text">チェックイン後、スパ① ── 移動の疲れを解消</span>
         </li>
         <li class="schedule-item">
+          <span class="sched-time">16:00</span>
+          <span class="sched-text">Pure Spa（ホテル内）</span>
+        </li>
+        <li class="schedule-item">
           <span class="sched-time">夜</span>
           <span class="sched-text">ホテルのビーチでゆったりリラックス</span>
         </li>
@@ -501,9 +588,10 @@
       </div>
       <ul class="schedule-list">
         <li class="schedule-item"><span class="sched-time">午前</span><span class="sched-text">ゆっくり起きて贅沢な朝食。スパ③ ── 美肌・保湿</span></li>
+        <li class="schedule-item"><span class="sched-time">10:00</span><span class="sched-text">Pure Spa（ホテル内）</span></li>
         <li class="schedule-item"><span class="sched-time">昼間</span><span class="sched-text">ナマンのプール＆プライベートビーチで「何もしない贅沢」</span></li>
         <li class="schedule-item"><span class="sched-time">17:00</span><span class="sched-text">Grabでホイアンへ（約20分）</span></li>
-        <li class="schedule-item"><span class="sched-time">夕食</span><span class="sched-text">川沿いテラス席（サクラ または カーゴ・クラブ）でディナー</span></li>
+        <li class="schedule-item"><span class="sched-time">18:00</span><span class="sched-text">サクラレストラン ── 川沿いテラス席でディナー</span></li>
         <li class="schedule-item"><span class="sched-time">夜</span><span class="sched-text">灯籠流し体験・ランタンが輝く旧市街を散策</span></li>
       </ul>
       <div class="tip-box">
